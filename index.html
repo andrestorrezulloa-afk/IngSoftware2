@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html xml:lang="es">
+<html lang="es">
   <head>
     <title>Saludador</title>
   </head>
   <body>
     <h1>Saludador</h1>
     <form id="saludar-form">
-      <input type="submit" value="Saludar" id="saludar-button" />
       <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" />      
+      
+      <select id="genero" name="genero">
+        <option value="" disabled selected>Seleccione su género</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+      </select>
+
+      <input type="submit" value="Saludar" id="saludar-button" />
     </form>
     <div id="resultado-div"></div>
 
