@@ -8,16 +8,23 @@ const edadInput = document.querySelector("#edad");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const nombre = nombreInput.value;
+  let nombre = nombreInput.value.toLowerCase();
   const genero = generoInput.value.toLowerCase();
   const idioma = idiomaInput.value.toLowerCase();
   const hora = new Date().getHours();
-  const edad = parseInt(edadInput.value) || 0;
+  let edad = parseInt(edadInput.value);
   
   let saludo = "";
   let saludoGenero = "";
 
   if (idioma === "ingles") {
+    if (nombre === "") {
+      nombre = "visitor";
+    }
+    if (edad < 0  ) {
+      div.innerHTML = "Add a valid age.";
+      return;
+    }
     if (edad > 30) {
       if (genero === "masculino") {
         saludoGenero = "Mr.";
@@ -43,7 +50,13 @@ form.addEventListener("submit", (event) => {
       saludo = "Good evening";
     }
   } else {
-  
+    if (nombre === "") {
+      nombre = "visitante";
+    }
+    if (edad < 0) {
+      div.innerHTML = "Ingrese una edad válida.";
+      return;
+    }
     if (edad > 30) {
       if (genero === "masculino") {
         saludoGenero = "Sr.";
@@ -61,7 +74,7 @@ form.addEventListener("submit", (event) => {
         saludoGenero = "Jovencite";
       }
     }
-
+  
   
     if (hora >= 6 && hora < 12) {
       saludo = "Buenos días";
@@ -71,6 +84,9 @@ form.addEventListener("submit", (event) => {
       saludo = "Buenas noches";
     }
   }
+  
+  
 
   div.innerHTML = "<p>" + saludo + ", " + saludoGenero + " " + nombre + "!</p>";
+  
 });
